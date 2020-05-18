@@ -1,0 +1,50 @@
+"Building and interpreting a Classification Model"
+
+When it comes to Supervised Learning, there are two forms a model can take on: Regression, where we predict values, or 
+classification, where we try to identify a class value. When working a with a classification model, the initial steps
+we take to begin to work with the data are the same as any regression task. Import the data, and perform Exploratory
+Data Analysis. We check for null values, we check for normal distributions, we check for outliers. During this step, however,
+it is critically important to begin to get an understanding of our target variable-- the binary classifier we are seeking
+to predict on. Using methods like '.value_counts()' we can determine, after normalizing, just how much of our data belongs
+to one class, or another. Classification can run into the unique problem of 'Class Imbalance' if one class of data severely
+outweighs another in representation of the dataset. Because of Class Imbalance, any model we could run on the data may outwardly
+appear as having a high level of accuracy, but this is only because it is very easy to correct a class of '0' if 2000 out of
+2500 data points are '0'. Class Imbalance limits our model's ability to make valuable predictions, because, statistically, it
+becomes easier for our model to choose the correct class, not as a factor of its performance, but as a factor of the class'
+frequency in the data. A popular method for correcting class imbalance is Synthetic Minority Oversampling, or SMOTE. This technique
+creates synthetic examples of our rarer class. For example, if we had 2000 '0' and 500 '1' in a binary classification, SMOTE
+would create 1,500 synthetic examples of '1' to create class balance in our data set. Running any model on this SMOTE corrected
+data would, initially, hinder our model's accuracy, but would, in the long run, create more valuable predictions as the correct
+predictions, or high accuracy we may achieve later on, are a direct consequence of our model's performance. To reach this end,
+we start with our typical train_test_split. After so doing, we then train our binary classifier. For example, if we were to train
+a Stochastic Gradient Descent Classifier, we would instantiate the object from sklearn.linear_model, and then fit our training data
+to the classifier. But measuring the accuracy of our model is not as simple as fitting our data to it. We must first evaluate
+our performance measures. And, just like with Linear Regression, this can be achieved through cross validation. Cross validation creates
+sample splits in our train_test_split groups so that predicctions can be evaluated on each fold of the training model. Cross
+validation ensures each of our folds are representative of our dataset as a whole, and allow us to guage the accuracy of our 
+model on each of the folds, increasing our insight more than simply running a model once. The best way to evaluate a classifier,
+however, is with a confusion matrix. A confusion matrix allows us to map out the rate of our models predictions being True Positives,
+True Negatives, False Positives, and False Negatives. Depending on the context of our classification, one or more of these categories
+might have more weight on our observations than others. For example, when examining churn inside a company, False Negatives-- where
+a custmer is expected to stay, but actually churns-- would be the most detrimental, since the company would be misidentifying a target
+group. To generate a confusion matrix, we have to compare predictions to our actual target values. Each row in a confusion matrix
+represents a class, whereas each column represents a prediction for that class. The first row represents the negative class, and the second
+row the positive class. Looking at a confusion matrix, we can gauge how well our model is able to predict each class. There are more metrics
+than confusion matrices, however, to gauge our model by. 
+
+The accuracy of positive predictions is called the Precision. Precision is calculated as TP/TP+FP. Recall, or Sensitivity/True 
+Positive Rate, is calculated as TP/TP+FN. Recall is the ratio of positive instances that are correctly detected by the classifier.
+These metrics can, fortunately, be calculated using sklearn.metrics. Precision and Recall can also be evaluated all at once as an
+F1-Score, or the Harmonic Mean of Precision and Recall. F1 is calculated as (Precision * Recall)/ (Precision + Recall) or TP/(TP + (FN+FP/2)).
+
+Another metric we use to gauge classifiers is the ROC curve, and AUC score. The ROC curve graphs the True Positive Rate versus the 
+False Positive Rate. This metric is used to evaluate the cost-benefit analysis of predicting a true positive with a certain accuracy
+versus the chance of predicting it incorrectly as a false positive; or recall versus the false positive rate. In other words,
+the ROC curve plots sensitivity against 1-specificity.
+
+
+
+
+
+
+
