@@ -1,5 +1,5 @@
 
-# Module 3 Final Project
+# Exploring customer churn at SyriaTel
 
 
 ## Introduction
@@ -24,7 +24,4 @@ There is no relationship between these variables.
 This will be a supervised learning task with a plain batch. Instances are labeled with classification values corresponding to a target variable. 
 
 ## Performance Measure
-For this logistic regression analysis, I will be using the ROC curve and AUC score to get an idea of how much error my model makes in its pclassifications.
-
-## Conclusion & Recommendations
-# dsc-mod-3-project-v2-1-online-ds-ft-120919-master
+For this logistic regression analysis, I will be using the ROC curve and AUC score to get an idea of how much error my model makes in its classifications.
